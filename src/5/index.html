@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8" />
+   <title>Test jQuery</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+   <div id="erreur">
+      <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+   </div>
+
+   <form>
+      <label for="pseudo">Pseudonyme</label> <input type="text" id="pseudo" class="champ" />
+      <label for="mdp">Mot de passe</label> <input type="password" id="mdp" class="champ" />
+      <label for="confirmation">Confirmation</label> <input type="password" id="confirmation" class="champ" />
+      <label for="mail">E-mail</label> <input type="text" id="mail" class="champ" />
+      <input type="submit" id="envoi" value="Envoyer" /> <input type="reset" id="rafraichir" value="Rafraîchir" />
+   </form>
+   <script src="./scripts.js"></script>
+</body>
+
+</html>
