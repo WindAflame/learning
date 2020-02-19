@@ -29,10 +29,10 @@ export class Form {
     verifyField() {
         this.$name.keyup((e) => {
             Form.checkField(e.currentTarget);
-        })
+        });
         this.$surname.keyup((e) => {
             Form.checkField(e.currentTarget);
-        })
+        });
     }
 
     reset() {
