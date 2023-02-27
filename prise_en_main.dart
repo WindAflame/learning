@@ -1,4 +1,5 @@
 
+enum Day {  Lundi,  Mardi,  Mercredi, Jeudi, Vendredi, Samedi, Dimanche }
 void main() {  
     // Variables
     var myAge = 32; // inference
@@ -7,11 +8,14 @@ void main() {
     double e = 2.7;
     const test = "Test";
     final tests = "Tests";
-    enum Day {  lundi,  mardi,  mercredi}
-    final aDay = Day.lundi;
+    final aDay = Day.Lundi;
+    print(aDay);
+    print(Day.values);
+    print(Day.Lundi.index);
     bool val = true;
-    dynamic testtt = {name:"name"};
-
+    dynamic message = 'Hello, World';
+    message = 8; 
+    
     // Valeur Null
     int age;
     var error = err ?? "No error";
