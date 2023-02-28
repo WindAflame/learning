@@ -16,9 +16,12 @@
 - Présentation Widget
     - Architecture d'un projet Flutter : https://docs.flutter.dev/resources/architectural-overview#architectural-layers
     - Comprendre le fonctionnement d'un widget : https://docs.flutter.dev/resources/architectural-overview#widgets
+    - Présentation de StatefulWidget : https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html
+    - Présentation de StatelessWidget : https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html
 ### Jour 3-4
-- Pratique des différents types de Widget
-- Utilisation de Provider
+- Apprendre L'utilisations des Widgets au travail d'un TP feuille de route : TODO List. Comment initialiser le projet, [ici](https://docs.flutter.dev/get-started/test-drive?tab=terminal). N'oublier pas de publier ce projet sur github pour que je vois votre évolution jusqu'a Vendredi.
+- Pratique des différents types de Widget : https://docs.flutter.dev/development/ui/widgets
+- Utilisation de Provider : https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple
 ### Jour 5
 - Comprendre le Null-Safety : https://dart.dev/codelabs/null-safety
-- TP Flutter
+- Fonctionnement de Firebase
