@@ -1,0 +1,29 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>300</x><y>50</y><w>210</w><h>90</h></coordinates><panel_attributes>/Task/
+--
++name: String
+--
+Task(String,CategoryEnum)
+toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>190</y><w>210</w><h>60</h></coordinates><panel_attributes>Course
+--
++category: CategoryEnum = Course
+--
+Course(String)
+toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>260</y><w>210</w><h>60</h></coordinates><panel_attributes>Sport
+--
++category: CategoryEnum = Sport
+--
+Sport(String)
+toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>190</y><w>210</w><h>60</h></coordinates><panel_attributes>Work
+--
++category: CategoryEnum = Work
+--
+Work(String)
+toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>80</y><w>110</w><h>100</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+CategoryEnum
+--
+Shopping
+Sport
+Work</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>80</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+m2=0..0
+category</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>130</y><w>80</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>130</y><w>40</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>130</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;110;60</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>170</y><w>610</w><h>200</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;80;10;180;590;180;590;10</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>170</y><w>460</w><h>200</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;150;10;180;440;180;440;10</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>170</y><w>310</w><h>200</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;80;10;180;290;180;290;10</additional_attributes></element></diagram>
