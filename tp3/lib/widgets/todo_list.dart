@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tp3/classes/todo_list.dart';
+import 'package:tp3/dialogs/create_task.dart';
 
 class TodoListPage extends StatefulWidget {
   const TodoListPage({super.key, required this.title});
@@ -28,6 +29,20 @@ class _TodoListPageState extends State<TodoListPage> {
     super.initState();
   }
 
+  void _addOrUpdateTask(Task? task) async {
+    Task newTask = await showDialog(
+        context: context,
+        builder: (_) => AddTaskDialog(taskList: taskList, task: task));
+    setState(() {
+      if (task != null) {
+        task.name = newTask.name;
+        task.category = newTask.category;
+      } else {
+        taskList.add(newTask);
+      }
+    });
+  }
+
   List<Widget> drawTasks(BuildContext context, CategoryEnum category) {
     List<Widget> result = [];
     for (Task task in taskList.where((el) => el.category == category)) {
@@ -43,16 +58,22 @@ class _TodoListPageState extends State<TodoListPage> {
         trailing: Wrap(
           spacing: 12,
           children: <Widget>[
-            IconButton(icon: const Icon(Icons.edit), onPressed: () {
-              setState(() {
-                _addTask(context, task);
-              });
-            },),
-            IconButton(icon: const Icon(Icons.delete), onPressed: () {
-              setState(() {
-                taskList.remove(task);
-              });
-            },),
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () {
+                setState(() {
+                  _addOrUpdateTask(task);
+                });
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () {
+                setState(() {
+                  taskList.remove(task);
+                });
+              },
+            ),
           ],
         ),
       ));
@@ -84,84 +105,6 @@ class _TodoListPageState extends State<TodoListPage> {
     return result;
   }
 
-  Future<void> _addTask(BuildContext context, [Task? task]) {
-    final formKey = GlobalKey<FormState>();
-    final taskNameCtrl = TextEditingController();
-    taskNameCtrl.text = task?.name ?? "";
-    CategoryEnum selectedCategory = task != null ? task.category : CategoryEnum.values.first;
-    final items = List.generate(CategoryEnum.values.length, (index) =>
-      DropdownMenuItem(
-        value: CategoryEnum.values[index],
-        child: Text(CategoryEnum.values[index].name),
-      ),
-    ); 
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Add a task'),
-        content: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.account_circle),
-                  hintText: 'Enter task name',
-                  labelText: 'Task Name',
-                ),
-                controller: taskNameCtrl,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
-              DropdownButtonFormField(
-                value: selectedCategory,
-                items: items, 
-                onChanged: (newValue) {
-                  selectedCategory = newValue!;
-                },
-                validator: (value) => value == null ? "Select a category" : null,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.pop(context);
-                      Task newTask; 
-                      switch (selectedCategory) {
-                        case CategoryEnum.shopping:
-                          newTask = Shopping(taskNameCtrl.text);
-                          break;
-                        case CategoryEnum.sport:
-                          newTask = Sport(taskNameCtrl.text);
-                          break;
-                        case CategoryEnum.work:
-                          newTask = Work(taskNameCtrl.text);
-                          break;
-                      }
-                      setState(() {
-                        if (task != null) {
-                          task.name = newTask.name;
-                          task.category = newTask.category;
-                        } else {
-                          taskList.add(newTask);
-                        }
-                      });
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('New task created.'),
-                      ));                      
-                    }
-                  },
-                  child: const Text('Submit'))
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,7 +114,9 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
       body: ListView(children: drawCategories(context)),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _addTask(context),
+        onPressed: () {
+          _addOrUpdateTask(null);
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

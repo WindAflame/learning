@@ -18,10 +18,20 @@
     - Comprendre le fonctionnement d'un widget : https://docs.flutter.dev/resources/architectural-overview#widgets
     - Présentation de StatefulWidget : https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html
     - Présentation de StatelessWidget : https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html
-### Jour 3-4
+### Jour 3
 - Apprendre L'utilisations des Widgets au travail d'un TP feuille de route : TODO List. Comment initialiser le projet, [ici](https://docs.flutter.dev/get-started/test-drive?tab=terminal). N'oublier pas de publier ce projet sur github pour que je vois votre évolution jusqu'a Vendredi.
 - Pratique des différents types de Widget : https://docs.flutter.dev/development/ui/widgets
-- Utilisation de Provider : https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple
+### Jour 4
+- Mise en route du TP To-Do List.
+- Mise en forme de la To-Do List.
+- Utilisation des formulaires (CRUD).
+- Utilisation des Dialogs.
 ### Jour 5
+- Utilisation de Provider : https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple
+- Utilisation de la Navigation par page dans une application avec Modular : https://modular.flutterando.com.br/
 - Comprendre le Null-Safety : https://dart.dev/codelabs/null-safety
+### Bonus
 - Fonctionnement de Firebase
+- Stockage Local (Cache et Base local)
+- Serialization
+- Utilisation de la Navigation par outlet dans une application avec Modular
