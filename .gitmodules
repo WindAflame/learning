@@ -1,0 +1,3 @@
+[submodule "AndroidFirstProject"]
+	path = AndroidFirstProject
+	url = git@github.com:WindAflame/AndroidFirstProject.git
