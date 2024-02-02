@@ -40,8 +40,6 @@
 
 ## Les Conteneurs
 
-- FrameLayout: permet de positionner les éléments les uns au-dessus des autres ;
-
 - LinearLayout: permet de positionner les éléments les uns à la suite des autres, dans le sens horizontal ou vertical ;
 
 - ConstraintLayout: permet de positionner les éléments les uns par rapport aux autres en utilisant des règles de positionnement ;
@@ -123,3 +121,76 @@ _https://developer.android.com/reference/android/widget/TextView#xml-attributes_
 ### Padding
 
 Modifie l'espacement interne à l'élement.
+
+### Association d'élément graphique avec le code Java
+
+_Pour dynamiser un élément graphique déclaré dans un layout, il faut d’abord lui associer un identifiant unique grâce à l’attribut android:id_
+
+Historiquement, l'utilisation de findViewById() était utilisé.
+Mais depuis, Google a développé deux bibliothèques permettant de le faire plus facilement : Data Binding et View Binding.
+
+Présentation de View Binding :
+
+- Ajout du module dans Gradle (buildFeature > android > compileOptions)
+
+  ```
+  android {
+  …
+  compileOptions { … }
+    buildFeatures {
+          viewBinding = true
+    }
+  }
+  ```
+
+- En activant View Binding pour notre application, nous avons activé un mécanisme qui va générer automatiquement une classe de liaison pour chaque fichier XML de type layout présent dans notre projet.
+
+- Cela permet que créer un Binding et de remplacer le code existant
+
+  Example :
+  ```
+  private FragmentWelcomeBinding binding;
+  ...
+  public View onCreateView
+  ...
+  binding = FragmentWelcomeBinding.inflate(inflater, container, false);
+  return binding.getRoot();
+  ...
+  ```
+
+### Gérer les actions des utilisateurs
+
+- Mise en place de Listener en fonction du composant à utiliser.
+
+- A référencer dans le onStart et non le onCreate car le cycle de vie n'a pas encore compiler les bind.
+
+### Navigation
+
+_android:visibility : Pour afficher ou cacher un contenu._
+
+Utilisation de FragmentManager pour naviguer entre différent fragment.
+
+```
+FragmentManager fragmentManager = getParentFragmentManager();
+FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+Fragment aFragment = Fragment.newInstance();
+// R.id.container est le id du FragmentContainerView dans xml activity_main
+fragmentTransaction.add(R.id.container, aFragment);
+fragmentTransaction.commit();
+```
+
+### Cycle de vie
+
+https://developer.android.com/reference/android/app/Activity#ActivityLifecycle
+
+### Structure MVVM
+
+https://developer.android.com/codelabs/android-room-with-a-view
+
+### ViewModel
+
+https://developer.android.com/topic/libraries/architecture/viewmodel?hl=fr
+
+### Stockage des données dans le téléphones à l'aide de Room.
+
+https://developer.android.com/training/data-storage/room/defining-data?hl=fr
